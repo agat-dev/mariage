@@ -4,16 +4,18 @@ import { useCallback, useEffect, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-const morphTime = 1.5;
+const morphTime = 0.8;
 const cooldownTime = 0.5;
 const startDelay = 1;
 
-const useMorphingText = (texts: string[]) => {
+const useMorphingText = (texts: string[], onFirstCycleComplete?: () => void, onConfettiTrigger?: () => void) => {
   const textIndexRef = useRef(0);
   const morphRef = useRef(0);
   const cooldownRef = useRef(0);
   const timeRef = useRef(new Date());
   const startDelayRef = useRef(startDelay);
+  const firstCycleCompletedRef = useRef(false);
+  const confettiTriggeredRef = useRef(false);
 
   const text1Ref = useRef<HTMLSpanElement>(null);
   const text2Ref = useRef<HTMLSpanElement>(null);
@@ -54,6 +56,22 @@ const useMorphingText = (texts: string[]) => {
 
     if (fraction === 1) {
       textIndexRef.current++;
+      
+      // Déclencher les confettis un peu avant la fin
+      if (!confettiTriggeredRef.current && textIndexRef.current >= texts.length - 2) {
+        confettiTriggeredRef.current = true;
+        if (onConfettiTrigger) {
+          onConfettiTrigger();
+        }
+      }
+      
+      // Vérifier si on a complété un cycle complet (scroll un peu plus tôt)
+      if (!firstCycleCompletedRef.current && textIndexRef.current >= texts.length - 1) {
+        firstCycleCompletedRef.current = true;
+        if (onFirstCycleComplete) {
+          onFirstCycleComplete();
+        }
+      }
     }
   }, [setStyles]);
 
@@ -102,10 +120,12 @@ const useMorphingText = (texts: string[]) => {
 interface MorphingTextProps {
   className?: string;
   texts: string[];
+  onFirstCycleComplete?: () => void;
+  onConfettiTrigger?: () => void;
 }
 
-const Texts: React.FC<Pick<MorphingTextProps, "texts">> = ({ texts }) => {
-  const { text1Ref, text2Ref } = useMorphingText(texts);
+const Texts: React.FC<Pick<MorphingTextProps, "texts" | "onFirstCycleComplete" | "onConfettiTrigger">> = ({ texts, onFirstCycleComplete, onConfettiTrigger }) => {
+  const { text1Ref, text2Ref } = useMorphingText(texts, onFirstCycleComplete, onConfettiTrigger);
   return (
     <>
       <span
@@ -144,6 +164,8 @@ const SvgFilters: React.FC = () => (
 export const MorphingText: React.FC<MorphingTextProps> = ({
   texts,
   className,
+  onFirstCycleComplete,
+  onConfettiTrigger,
 }) => (
   <div
     className={cn(
@@ -151,7 +173,7 @@ export const MorphingText: React.FC<MorphingTextProps> = ({
       className,
     )}
   >
-    <Texts texts={texts} />
+    <Texts texts={texts} onFirstCycleComplete={onFirstCycleComplete} onConfettiTrigger={onConfettiTrigger} />
     <SvgFilters />
   </div>
 );

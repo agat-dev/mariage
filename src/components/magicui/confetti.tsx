@@ -139,9 +139,9 @@ const ConfettiButtonComponent = ({
   };
 
   return (
-    <ShimmerButton onClick={handleClick} {...props}>
+    <Button onClick={handleClick} {...props}>
       {children}
-    </ShimmerButton>
+    </Button>
   );
 };
 

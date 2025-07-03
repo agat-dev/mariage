@@ -3,59 +3,18 @@ import { ReactLenis } from 'lenis/react';
 import { useEffect, useState, useRef } from "react";
 import confetti from "canvas-confetti";
 import { MorphingText } from "@/components/magicui/morphing-text";
-import { ShimmerButton } from '@/components/magicui/shimmer-button';
-
-
+import Image from "next/image";
 
 const texts = [
   "Vous êtes",
   "invités",
   "à célébrer",
   "le mariage",
-  "d'Agathe Martin",
-  "et Alain Karinthi",
+  "d'Agathe et Alain",
   "le 27 septembre 2025",
   "à Trizac, Cantal",
 ];
 
-
-function ConfettiSideCannons() {
-  const handleClick = () => {
-    const end = Date.now() + 3 * 1000; // 3 seconds
-    const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
- 
-    const frame = () => {
-      if (Date.now() > end) return;
- 
-      confetti({
-        particleCount: 2,
-        angle: 60,
-        spread: 55,
-        startVelocity: 60,
-        origin: { x: 0, y: 0.5 },
-        colors: colors,
-      });
-      confetti({
-        particleCount: 2,
-        angle: 120,
-        spread: 55,
-        startVelocity: 60,
-        origin: { x: 1, y: 0.5 },
-        colors: colors,
-      });
- 
-      requestAnimationFrame(frame);
-    };
- 
-    frame();
-  };
- 
-  return (
-    <div className="relative">
-      <ShimmerButton className='py-4 px-8 rounded-full bg-pink-200 text-pink-200 text-xl hover:text-black hover:bg-purple-300 transition-all duration-600 ease-in' onClick={handleClick}>Venir à Trizac</ShimmerButton>
-    </div>
-  );
-}
 
 function MountainVillageBackground() {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -475,6 +434,65 @@ function MountainVillageBackground() {
 }
 
 export default function Index() {
+  const handleConfettiTrigger = () => {
+    // Déclencher les confettis seulement
+    const end = Date.now() + 3 * 1000; // 3 seconds
+    const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
+ 
+    const frame = () => {
+      if (Date.now() > end) return;
+ 
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 0, y: 0.5 },
+        colors: colors,
+      });
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 1, y: 0.5 },
+        colors: colors,
+      });
+ 
+      requestAnimationFrame(frame);
+    };
+ 
+    frame();
+  };
+
+  const handleFirstCycleComplete = () => {
+    // Retarder le scroll d'un peu
+    setTimeout(() => {
+      // Scroll down de 100vh avec animation plus lente
+      const startPosition = window.scrollY;
+      const targetPosition = startPosition + window.innerHeight;
+      const duration = 2000; // 2 secondes au lieu de la vitesse par défaut
+      const startTime = Date.now();
+
+      const animateScroll = () => {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Fonction d'easing pour un mouvement plus fluide (ease-out)
+        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+        
+        const currentPosition = startPosition + (targetPosition - startPosition) * easeOutCubic;
+        window.scrollTo(0, currentPosition);
+        
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        }
+      };
+
+      animateScroll();
+    }, 600); // Délai de 800ms avant le déclenchement du scroll
+  };
+
   return (
     <>
     <ReactLenis root>
@@ -483,20 +501,19 @@ export default function Index() {
           <section className='flex flex-col justify-center align-middle text-black h-screen w-full sticky top-0 overflow-hidden'>
               <MountainVillageBackground />
               <div className="relative z-10">
-                <MorphingText texts={texts} className='text-black font-light'/>
+                <MorphingText texts={texts} className='text-black font-light' onFirstCycleComplete={handleFirstCycleComplete} onConfettiTrigger={handleConfettiTrigger}/>
               </div>
-              <div className="relative mt-64 mx-auto z-10">
-                <ConfettiSideCannons />
-              </div>
+              <div className="h-[63vh]"></div>
           </section>
 
-          <section className='bg-gray-300 text-black grid place-content-center h-screen sticky top-24 rounded-tr-2xl rounded-tl-2xl overflow-hidden'>
-            <div className='absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]'></div>
-            <h1 className='2xl:text-7xl text-4xl px-8 font-semibold text-center tracking-tight leading-[120%]'>
-              If you don&apos;t like this Smooth Scroll then I&apos;m sorry, <br /> create
-              your own and make it open source 💼
-            </h1>
+          <section className='p-8 bg-black text-white h-screen sticky top-24 rounded-tr-2xl rounded-tl-2xl overflow-hidden'>
+            <div className="mr-0 flex flex-col w-full justify-end gap-4 font-poiret-one text-right text-6xl"><h2>Agathe Martin</h2><h2>& Alain Karinthi</h2></div>
+            <div className='flex justify-between mt-8'>
+            <div className='mt-24 font-urbanist text-3xl font-light'><p className='mb-4 text-2xl italic'>vous invitent</p><p>le 27 Septembre 2025</p><p>à 16h</p><p>à Trizac</p><p>Place de la Mairie</p></div>
+            </div>
           </section>
+
+          {/*
           <section className='text-white  h-screen  w-full bg-slate-950 grid place-content-center sticky top-0'>
             <div className='absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]'></div>
             <h1 className='2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]'>
@@ -538,9 +555,33 @@ export default function Index() {
             </div>
           </div>
         </section>
+          */}
+        </div>
+      
         <section className='text-white  w-full bg-slate-950  '>
           <div className='grid grid-cols-2 px-8'>
             <div className='grid gap-2'>
+              <figure className='sticky top-0 h-screen grid place-content-center'>
+                <img
+                  src='mariage-1.jpg'
+                  alt=''
+                  className='transition-all duration-300  w-124 h-96   align-bottom object-cover rounded-md'
+                />
+              </figure>              
+              <figure className='sticky top-0 h-screen grid place-content-center'>
+                <img
+                  src='mariage-2.jpg'
+                  alt=''
+                  className='transition-all duration-300  w-124 h-96   align-bottom object-cover rounded-md'
+                />
+              </figure>              
+              <figure className='sticky top-0 h-screen grid place-content-center'>
+                <img
+                  src='mariage-3.jpg'
+                  alt=''
+                  className='transition-all duration-300  w-124 h-96   align-bottom object-cover rounded-md'
+                />
+              </figure>
               <figure className='sticky top-0 h-screen grid place-content-center'>
                 <img
                   src='mariage-4.jpg'
