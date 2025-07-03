@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const morphTime = 0.8;
 const cooldownTime = 0.5;
-const startDelay = 1;
+const startDelay = 0.5;
 
 const useMorphingText = (texts: string[], onFirstCycleComplete?: () => void, onConfettiTrigger?: () => void) => {
   const textIndexRef = useRef(0);
