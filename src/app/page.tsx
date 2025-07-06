@@ -1,6 +1,5 @@
 'use client';
 import { ReactLenis } from 'lenis/react';
-import Gallery from "@/components/gallery";
 import Hero from '@/components/hero';
 import Navbar from '@/components/navbar';
 import Programme from '@/components/programme';

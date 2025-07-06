@@ -27,38 +27,24 @@ export default function NotreHistoire() {
     const containerHeight = window.innerHeight;
     const relativeScroll = Math.max(0, scrollY - containerTop);
     
-    // Zone totale d'animation = nombre d'images * hauteur d'écran
-    const totalAnimationHeight = images.length * containerHeight;
+    // Chaque image a une zone de déclenchement de 50vh (plus rapide)
+    const imageStartScroll = index * containerHeight * 0.5;
+    const imageEndScroll = (index + 1) * containerHeight * 0.5;
     
-    // Si on est dans la zone d'animation
-    if (relativeScroll <= totalAnimationHeight) {
-      // Chaque image a une zone de déclenchement de 100vh
-      const imageStartScroll = index * containerHeight;
-      const imageEndScroll = (index + 1) * containerHeight;
-      
-      // Progression de l'animation pour cette image (0 à 1)
-      const progress = Math.max(0, Math.min(1, 
-        (relativeScroll - imageStartScroll) / (imageEndScroll - imageStartScroll)
-      ));
+    // Progression de l'animation pour cette image (0 à 1)
+    const progress = Math.max(0, Math.min(1, 
+      (relativeScroll - imageStartScroll) / (imageEndScroll - imageStartScroll)
+    ));
 
-      // Translation depuis la droite vers le centre
-      const translateX = (1 - progress) * 100; // 100% à droite, 0% au centre
-      
-      // Opacité progressive - la première image est visible dès le début
-      const opacity = index === 0 ? Math.max(1, progress) : progress;
-
-      return {
-        transform: `translateX(${translateX}%)`,
-        opacity,
-        zIndex: index + 1,
-        transition: 'none'
-      };
-    }
+    // Translation depuis la droite vers le centre
+    const translateX = (1 - progress) * 100; // 100% à droite, 0% au centre
     
-    // Après l'animation, toutes les images restent visibles au centre
+    // Opacité progressive - la première image est visible dès le début
+    const opacity = index === 0 ? 1 : progress;
+
     return {
-      transform: 'translateX(0%)',
-      opacity: 1,
+      transform: `translateX(${translateX}%)`,
+      opacity,
       zIndex: index + 1,
       transition: 'none'
     };
@@ -66,8 +52,8 @@ export default function NotreHistoire() {
 
   return (
     <div ref={containerRef} className="relative">
-      {/* Container avec la hauteur totale nécessaire pour l'animation */}
-      <div style={{ height: `${images.length * 100}vh` }} className="relative">
+      {/* Container avec la hauteur réduite pour l'animation */}
+      <div style={{ height: `${images.length * 50}vh` }} className="relative">
         
         {/* Zone sticky pour l'animation des images - reste fixe pendant le scroll */}
         <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-black">

@@ -1,5 +1,4 @@
 import React from 'react';
-import NotreHistoire from './notre-histoire';
 
 export default function Programme() {
   return (
