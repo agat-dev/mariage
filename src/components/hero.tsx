@@ -78,7 +78,10 @@ export default function Hero() {
 
   return (
     <main className="relative h-screen w-screen overflow-hidden flex items-center justify-center flex-col">
-      {/* Background gradient - style film muet */}
+
+
+
+      {/* Background gradient - style film muet 
       <div 
         className="absolute inset-0 z-0"
         style={{
@@ -86,14 +89,14 @@ export default function Hero() {
         }}
       />
 
-      {/* Canvas pour le bruit de fond */}
+      Canvas pour le bruit de fond 
       <canvas 
         ref={canvasRef}
         className="absolute inset-0 z-10 opacity-30 pointer-events-none mix-blend-multiply"
         style={{ filter: 'contrast(170%) brightness(100%)' }}
       />
 
-      {/* Effet de crépitement avec petits points blancs */}
+       Effet de crépitement avec petits points blancs 
       <div 
         className="absolute inset-0 z-11 pointer-events-none opacity-80"
         style={{
@@ -119,7 +122,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Crépitement secondaire plus fin */}
+       Crépitement secondaire plus fin 
       <div 
         className="absolute inset-0 z-12 pointer-events-none opacity-60"
         style={{
@@ -142,7 +145,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Pellicule usée - rayures verticales */}
+      Pellicule usée - rayures verticales 
       <div 
         className="absolute inset-0 z-12 pointer-events-none opacity-30"
         style={{
@@ -170,7 +173,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Taches et défauts de pellicule */}
+      Taches et défauts de pellicule 
       <div 
         className="absolute inset-0 z-13 pointer-events-none opacity-20"
         style={{
@@ -188,7 +191,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Perforations de pellicule */}
+      Perforations de pellicule 
       <div 
         className="absolute left-0 top-0 z-14 h-full w-8 pointer-events-none opacity-40"
         style={{
@@ -224,7 +227,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Vignette effect */}
+     Vignette effect 
       <div 
         className="absolute inset-0 z-20 pointer-events-none"
         style={{
@@ -233,7 +236,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Barre verticale qui traverse l'écran - atténuée */}
+       Barre verticale qui traverse l'écran - atténuée 
       <div 
         className="absolute top-0 z-25 h-full pointer-events-none"
         style={{
@@ -245,7 +248,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Effet de scintillement - presque invisible */}
+      Effet de scintillement - presque invisible
       <div 
         className="absolute inset-0 z-30 pointer-events-none"
         style={{
@@ -254,14 +257,17 @@ export default function Hero() {
           animation: Math.random() > 0.9998 ? 'flicker 0.08s infinite' : 'none'
         }}
       />
+        */}
+
 
       {/* Title container */}
       <div className="relative z-40 text-center px-8 space-y-4">   
 
-       <TextAnimate animation="blurIn" as="h1" className='font-poiret-one text-5xl text-white'>Agathe & Alain vous invitent à célébrer leur mariage</TextAnimate>
+       <TextAnimate animation="blurIn" as="h1" className='font-poiret-one md:text-5xl text-3xl text-white'>Agathe Martin & Alain Karinthi vous invitent </TextAnimate>
+       <TextAnimate animation="blurIn" as="h1" className='font-poiret-one md:text-5xl text-3xl text-white'>à célébrer leur mariage</TextAnimate>
         <p className="text-white/80 font-bold font-poiret-one leading-tight mt-20 mb-10"
             style={{
-              fontSize: 'clamp(1rem, 4vw, 2.4rem)',
+              fontSize: 'clamp(2rem, 4vw, 2.4rem)',
               letterSpacing: '0.1em',
               opacity: lineVisible[2] ? 1 : 0,
               transform: `scale(${lineVisible[2] ? 1 : 0.9})`,
@@ -272,7 +278,7 @@ export default function Hero() {
         </p>
         <p className="text-white/80 font-poiret-one leading-tight mb-4"
             style={{  
-              fontSize: 'clamp(1rem, 4vw, 2rem)',
+              fontSize: 'clamp(1.5rem, 4vw, 2rem)',
               letterSpacing: '0.1em',
               opacity: lineVisible[3] ? 1 : 0,
               transform: `scale(${lineVisible[3] ? 1 : 0.9})`,
@@ -283,7 +289,7 @@ export default function Hero() {
         </p>
         <p className="text-white/80 font-poiret-one leading-tight"
             style={{
-              fontSize: 'clamp(1rem, 4vw, 2rem)',
+              fontSize: 'clamp(1.5rem, 4vw, 2rem)',
               letterSpacing: '0.1em',
               opacity: lineVisible[4] ? 1 : 0,
               transform: `scale(${lineVisible[4] ? 1 : 0.9})`,

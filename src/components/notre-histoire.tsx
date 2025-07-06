@@ -27,12 +27,14 @@ export default function NotreHistoire() {
     const containerHeight = window.innerHeight;
     const relativeScroll = Math.max(0, scrollY - containerTop);
     
-    // Zone totale d'animation
-    const totalAnimationHeight = images.length * containerHeight * 0.5;
-    
-    // Chaque image a une zone de déclenchement de 50vh
+    // Zone d'animation pour chaque image
     const imageStartScroll = index * containerHeight * 0.5;
     const imageEndScroll = (index + 1) * containerHeight * 0.5;
+    
+    // Zone totale d'animation (dernière image complètement centrée)
+    const totalAnimationHeight = images.length * containerHeight * 0.5;
+    // Zone de sécurité étendue pour s'assurer que la dernière image soit complètement visible
+    const safetyZone = totalAnimationHeight + containerHeight * 0.5;
     
     // Progression de l'animation pour cette image (0 à 1)
     const progress = Math.max(0, Math.min(1, 
@@ -42,21 +44,34 @@ export default function NotreHistoire() {
     // Translation depuis la droite vers le centre
     const translateX = (1 - progress) * 100; // 100% à droite, 0% au centre
     
-    // Opacité progressive
+    // Opacité progressive - logique renforcée pour la dernière image
     let opacity;
-    if (index === 0) {
+    if (relativeScroll >= safetyZone) {
+      // Dans la zone de sécurité étendue, toutes les images sont visibles
+      opacity = 1;
+    } else if (index === 0) {
       // La première image est toujours visible
       opacity = 1;
-    } else if (relativeScroll >= totalAnimationHeight) {
-      // Après l'animation, toutes les images restent visibles
-      opacity = 1;
+    } else if (index === images.length - 1) {
+      // Logique spéciale pour la dernière image - elle doit être complètement visible
+      if (relativeScroll >= imageEndScroll + containerHeight * 0.25) {
+        opacity = 1;
+      } else {
+        opacity = progress;
+      }
+    } else if (relativeScroll >= imageStartScroll) {
+      // Images intermédiaires
+      opacity = Math.max(progress, relativeScroll >= imageEndScroll ? 1 : progress);
     } else {
-      // Pendant l'animation
-      opacity = progress;
+      // Image pas encore déclenchée
+      opacity = 0;
     }
 
+    // Position finale : toutes les images restent centrées après animation
+    const finalTranslateX = relativeScroll >= safetyZone ? 0 : translateX;
+
     return {
-      transform: relativeScroll >= totalAnimationHeight ? 'translateX(0%)' : `translateX(${translateX}%)`,
+      transform: `translateX(${finalTranslateX}%)`,
       opacity,
       zIndex: index + 1,
       transition: 'none'
@@ -65,8 +80,8 @@ export default function NotreHistoire() {
 
   return (
     <div ref={containerRef} className="relative">
-      {/* Container avec la hauteur réduite pour l'animation */}
-      <div style={{ height: `${images.length * 50}vh` }} className="relative">
+      {/* Container avec la hauteur nécessaire pour l'animation + espace supplémentaire */}
+      <div style={{ height: `${(images.length + 1) * 60}vh` }} className="relative">
         
         {/* Zone sticky pour l'animation des images - reste fixe pendant le scroll */}
         <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-black">

@@ -106,10 +106,10 @@ export default function GoogleMap({ className = '' }: GoogleMapProps) {
 
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`w-screen relative ${className}`}>
       {/* Affichage de la distance si disponible */}
       {distance && (
-        <div className="mb-3 p-3 text-3xl">
+        <div className="mb-3 md:p-3 md:text-4xl text-3xl">
           <p className="font-poiret-one text-white-900 font-bold text-center">
             Vous n&apos;êtes plus qu&apos;à {distance} de Trizac
           </p>
@@ -119,8 +119,8 @@ export default function GoogleMap({ className = '' }: GoogleMapProps) {
 
 
       {/* Informations de contact */}
-      <div className="mt-20 p-4 bg-gray-50 rounded-lg">
-        <h3 className="font-poiret-one text-xl font-bold text-gray-800 mb-2">
+      <div className="my-20 p-4 bg-gray-50 rounded-lg">
+        <h3 className="font-poiret-one text-3xl font-bold text-gray-800 mb-2">
           Lieu de célébration
         </h3>
 
@@ -133,17 +133,14 @@ export default function GoogleMap({ className = '' }: GoogleMapProps) {
           </div>
         )}
         
-        <p className="font-poiret-one text-xl text-gray-600 mb-1">
+        <p className="font-poiret-one text-2xl text-gray-600 mt-8 mb-4">
           <strong>Mairie de Trizac</strong>
         </p>
-        <p className="font-urbanist text-gray-600 mb-1">
+        <p className="font-urbanist text-gray-600 mb-2">
           Place de la Mairie
         </p>
-        <p className="font-urbanist text-gray-600 mb-3">
+        <p className="font-urbanist text-gray-600 mb-6">
           15400 Trizac, Cantal, France
-        </p>
-        <p className="font-urbanist text-sm text-gray-500">
-          Cérémonie civile le 27 septembre 2025 à 16h30
         </p>
       </div>
 

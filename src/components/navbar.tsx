@@ -20,8 +20,7 @@ export default function Navbar({ className = "" }: NavbarProps) {
 
   const navItems = [
     { name: "Programme", href: "#programme" },
-    { name: "Venir à Trizac", href: "#story" },
-    { name: "Qui sommes nous ?", href: "#info" },
+    { name: "Venir à Trizac", href: "#venir" },
     { name: "Contact", href: "#rsvp" },
   ];
 
@@ -73,7 +72,7 @@ export default function Navbar({ className = "" }: NavbarProps) {
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className="text-white/80 hover:text-white px-3 py-2 text-lg font-poiret-one tracking-wide transition-colors duration-200 relative group"
+                  className="text-white/80 hover:text-white px-3 py-2 text-lg font-urbanist tracking-wide transition-colors duration-200 relative group"
                   whileHover={{ scale: 1.05 }}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
