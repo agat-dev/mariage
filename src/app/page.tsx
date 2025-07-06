@@ -3,11 +3,13 @@ import { ReactLenis } from 'lenis/react';
 import { useEffect, useState, useRef } from "react";
 import confetti from "canvas-confetti";
 import { MorphingText } from "@/components/magicui/morphing-text";
-import Image from "next/image";
+import Gallery from "@/components/gallery";
 import Hero from '@/components/hero';
 import Navbar from '@/components/navbar';
 import Programme from '@/components/programme';
 import NotreHistoire from '@/components/notre-histoire';
+import GoogleMap from '@/components/google-map';
+import SplashCursor from '@/components/ui/cursor';
 
 
 function MountainVillageBackground() {
@@ -492,17 +494,18 @@ export default function Index() {
   return (
     
     <>
+    <SplashCursor />
+
     <ReactLenis root>
       <main className='bg-black'>
         <Navbar />
         <div className='wrapper'>
-          <section className='flex flex-col justify-center align-middle text-black h-screen w-full sticky top-0 overflow-hidden'>
+          <section className='m-0 p-0 flex flex-col justify-center align-middle text-black h-screen w-full sticky top-0 overflow-hidden'>
               {/* <MountainVillageBackground /> */}
               <div className="relative z-10">
                 <Hero />
                 {/*<MorphingText texts={texts} className='text-black font-light' onFirstCycleComplete={handleFirstCycleComplete} onConfettiTrigger={handleConfettiTrigger}/>*/}
               </div>
-              <div className="h-[63vh]"></div>
           </section>
 
           <section id='programme' className='py-20 px-8 bg-black text-white h-screen sticky top-24 rounded-tr-2xl rounded-tl-2xl overflow-hidden'>
@@ -510,47 +513,14 @@ export default function Index() {
           </section>
 
 
-          <section className='text-white  h-screen  w-full bg-slate-950 grid place-content-center sticky top-0'>
-            <div className='absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]'></div>
-            <h1 className='2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]'>
-              Don&apos;t Forget To Share <br /> This Sticky CSS Tricks.😎
-            </h1>
-          </section>
+          <section className='text-white  h-screen  w-screen bg-slate-950 grid place-content-center sticky top-0'>
+            <GoogleMap 
+                className="w-full"
+                height="100%"
+              />
+          </section>          
+            <Gallery />
         </div>
-
-        <section className='text-white   w-full bg-slate-950  '>
-          <div className='grid grid-cols-2'>
-            <div className='sticky top-0 h-screen flex items-center justify-center'>
-              <h1 className='2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]'>
-                Thanks To Scroll.
-                <br /> Now Scroll Up Again☝️🏿
-              </h1>
-            </div>
-            <div className='grid gap-2'>
-              <figure className='grid place-content-center'>
-                <img
-                  src='mariage-1.jpg'
-                  alt=''
-                  className='transition-all duration-300 w-96 h-96  align-bottom object-cover '
-                />
-              </figure>
-              <figure className='grid place-content-center'>
-                <img
-                  src='mariage-2.jpg'
-                  alt=''
-                  className='transition-all duration-300 w-96 h-96  align-bottom object-cover '
-                />
-              </figure>
-              <figure className='grid place-content-center '>
-                <img
-                  src='mariage-3.jpg'
-                  alt=''
-                  className='transition-all duration-300 w-96 h-96  align-bottom object-cover '
-                />
-              </figure>
-            </div>
-          </div>
-        </section>
         
       
         <section className='text-white  w-full bg-black'>

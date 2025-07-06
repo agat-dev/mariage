@@ -183,6 +183,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  section {
+    @apply px-20;
+  }
 }
 
 /* Google Fonts Utility Classes */

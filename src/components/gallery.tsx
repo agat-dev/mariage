@@ -42,7 +42,7 @@ function Gallery({ items, setIndex, setOpen, index }: GalleryProps) {
               }}
               onClick={() => {
                 setIndex(i);
-                setOpen(true);
+                // setOpen(true); // Désactivé - ouverture de la lightbox désactivée
               }}
               src={item?.url}
               layoutId={item.id}
@@ -62,33 +62,57 @@ export default function index() {
   const items: GalleryItem[] = [
     {
       id: "1",
-      url: "/mariage-1.jpg",
-      title: "Photo de mariage 1",
-      description: "Belle photo de notre mariage"
+      url: "/trizac-1.jpg",
+      title: "Photo de trizac 1",
+      description: "Belle photo de notre trizac"
     },
     {
       id: "2", 
-      url: "/mariage-2.jpg",
-      title: "Photo de mariage 2",
+      url: "/trizac-2.jpg",
+      title: "Photo de trizac 2",
       description: "Moment magique capturé"
     },
     {
       id: "3",
-      url: "/mariage-3.jpg", 
-      title: "Photo de mariage 3",
+      url: "/trizac-3.jpg", 
+      title: "Photo de trizac 3",
       description: "Souvenir précieux"
     },
     {
       id: "4",
-      url: "/mariage-4.jpg",
-      title: "Photo de mariage 4", 
+      url: "/trizac-4.jpg",
+      title: "Photo de trizac 4", 
       description: "Instant inoubliable"
     },
     {
       id: "5",
-      url: "/mariage-5.png",
-      title: "Photo de mariage 5",
+      url: "/trizac-5.jpg",
+      title: "Photo de trizac 5",
       description: "Bonheur partagé"
+    },
+    {
+      id: "6",
+      url: "/trizac-6.jpg",
+      title: "Photo de trizac 6",
+      description: "Célébration joyeuse"
+    },
+    {
+      id: "7",
+      url: "/trizac-7.jpg",
+      title: "Photo de trizac 7",
+      description: "Émotion palpable"
+    },
+    {
+      id: "8",
+      url: "/trizac-8.jpg",
+      title: "Photo de trizac 8",
+      description: "Rires et sourires"
+    },
+    {
+      id: "9",
+      url: "/trizac-9.jpg",
+      title: "Photo de trizac 9",
+      description: "Amour éternel"
     }
   ];
 
@@ -111,7 +135,7 @@ export default function index() {
     };
   }, [open]);
   return (
-    <div className='relative'>
+    <div className='relative w-full min-w-full'>
       <Gallery
         items={items}
         index={index}
@@ -125,7 +149,7 @@ export default function index() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             key='overlay'
-            className='dark:bg-black/40 bg-white/40 backdrop-blur-sm fixed inset-0 z-50 top-0 left-0 bottom-0 right-0 w-full h-full grid place-content-center'
+            className=' dark:bg-black/40 bg-white/40 backdrop-blur-sm fixed inset-0 z-50 top-0 left-0 bottom-0 right-0 w-full h-full grid place-content-center'
             onClick={() => {
               setOpen(false);
             }}
