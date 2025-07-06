@@ -1,18 +1,34 @@
 import React, { useEffect, useState, useRef } from 'react';
-import Gallery from './gallery';
-import FuzzyText from './ui/fuzzy-text';
-import Navbar from './navbar';
+import { TextAnimate } from "@/components/magicui/text-animate";
+
+
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const [fadeStage, setFadeStage] = useState(0);
+  const [lineVisible, setLineVisible] = useState([false, false, false, false, false]);
   const [barPosition, setBarPosition] = useState(-100);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Animation d'apparition du titre
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 500);
+    // Animation d'apparition progressive des lignes
+    const lineSequence = [
+      { delay: 500, line: 0 },   // Première ligne
+      { delay: 1200, line: 1 },  // Deuxième ligne
+      { delay: 1900, line: 2 },  // Troisième ligne
+      { delay: 2600, line: 3 },  // Quatrième ligne
+      { delay: 3300, line: 4 }   // Cinquième ligne
+    ];
+
+    lineSequence.forEach(({ delay, line }) => {
+      setTimeout(() => {
+        setLineVisible(prev => {
+          const newVisible = [...prev];
+          newVisible[line] = true;
+          return newVisible;
+        });
+      }, delay);
+    });
 
     // Animation de la barre verticale qui traverse l'écran
     const animateBar = () => {
@@ -58,7 +74,7 @@ export default function Hero() {
 
     // Nettoyage
     return () => {
-      clearTimeout(timer);
+      // Nettoyage des timers est automatique avec les setTimeout individuels
     };
   }, []);
 
@@ -282,7 +298,7 @@ export default function Hero() {
         className="absolute top-0 z-25 h-full pointer-events-none"
         style={{
           left: `${barPosition}px`,
-          width: '3px',
+          width: '1px',
           background: 'linear-gradient(to bottom, transparent 0%, rgba(220,220,220,0.1) 20%, rgba(230,230,230,0.2) 50%, rgba(220,220,220,0.3) 80%, transparent 100%)',
           boxShadow: '0 0 8px rgba(200,200,200,0.1), inset 0 0 2px rgba(210,210,210,0.1)',
           filter: 'blur(0.8px)'
@@ -300,28 +316,17 @@ export default function Hero() {
       />
 
       {/* Title container */}
-      <div className={`relative z-40 text-center px-8 transition-all duration-2000 ${
-        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-      }`}>
+      <div className="relative z-40 text-center px-8 space-y-4">   
 
-       <h1 className="text-white/80 font-bold font-poiret-one leading-tight mb-6"
-            style={{
-              fontSize: 'clamp(1rem, 4vw, 3rem)',
-              letterSpacing: '0.1em',
-            }}>
-          Agathe & Alain vous invitent à célébrer
-        </h1>
-        <p className="text-white/80 font-poiret-one leading-tight mb-20"
+       <TextAnimate animation="blurIn" as="h1" className='font-poiret-one text-5xl text-white'>Agathe & Alain vous invitent à célébrer leur mariage</TextAnimate>
+        <p className="text-white/80 font-bold font-poiret-one leading-tight mt-20 mb-10"
             style={{
               fontSize: 'clamp(1rem, 4vw, 2rem)',
               letterSpacing: '0.1em',
-            }}>
-          leur mariage
-        </p>  
-        <p className="text-white/80 font-bold font-poiret-one leading-tight mb-10"
-            style={{
-              fontSize: 'clamp(1rem, 4vw, 2rem)',
-              letterSpacing: '0.1em',
+              opacity: lineVisible[2] ? 1 : 0,
+              transform: `scale(${lineVisible[2] ? 1 : 0.9})`,
+              filter: `blur(${lineVisible[2] ? '0px' : '8px'})`,
+              transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)'
             }}>
           le 27 Septembre 2025
         </p>
@@ -329,6 +334,10 @@ export default function Hero() {
             style={{  
               fontSize: 'clamp(1rem, 4vw, 1.5rem)',
               letterSpacing: '0.1em',
+              opacity: lineVisible[3] ? 1 : 0,
+              transform: `scale(${lineVisible[3] ? 1 : 0.9})`,
+              filter: `blur(${lineVisible[3] ? '0px' : '8px'})`,
+              transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)'
             }}>
               à 16h30
         </p>
@@ -336,6 +345,10 @@ export default function Hero() {
             style={{
               fontSize: 'clamp(1rem, 4vw, 1.5rem)',
               letterSpacing: '0.1em',
+              opacity: lineVisible[4] ? 1 : 0,
+              transform: `scale(${lineVisible[4] ? 1 : 0.9})`,
+              filter: `blur(${lineVisible[4] ? '0px' : '8px'})`,
+              transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)'
             }}>
           Place de la mairie, à Trizac, Cantal
         </p>
@@ -513,6 +526,53 @@ export default function Hero() {
           100% { 
             opacity: 0.5;
             transform: translate(0px, 0px) scale(1);
+          }
+        }
+        
+        @keyframes cinematicFade {
+          0% { 
+            opacity: 0;
+            transform: scale(0.9) translateY(30px);
+            filter: blur(15px) brightness(0.3);
+          }
+          25% { 
+            opacity: 0.1;
+            transform: scale(0.95) translateY(20px);
+            filter: blur(8px) brightness(0.5);
+          }
+          50% { 
+            opacity: 0.4;
+            transform: scale(0.98) translateY(10px);
+            filter: blur(4px) brightness(0.8);
+          }
+          75% { 
+            opacity: 0.8;
+            transform: scale(1) translateY(5px);
+            filter: blur(1px) brightness(1.1);
+          }
+          100% { 
+            opacity: 1;
+            transform: scale(1) translateY(0px);
+            filter: blur(0px) brightness(1);
+          }
+        }
+        
+        @keyframes filmFadeIn {
+          0% { 
+            opacity: 0;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.9);
+          }
+          30% { 
+            opacity: 0.3;
+            box-shadow: inset 0 0 60px rgba(0,0,0,0.6);
+          }
+          60% { 
+            opacity: 0.7;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
+          }
+          100% { 
+            opacity: 1;
+            box-shadow: inset 0 0 0px rgba(0,0,0,0);
           }
         }
       `}</style>

@@ -6,16 +6,8 @@ import { MorphingText } from "@/components/magicui/morphing-text";
 import Image from "next/image";
 import Hero from '@/components/hero';
 import Navbar from '@/components/navbar';
-
-const texts = [
-  "Vous êtes",
-  "invités",
-  "à célébrer",
-  "le mariage",
-  "d'Agathe et Alain",
-  "le 27 septembre 2025",
-  "à Trizac, Cantal",
-];
+import Programme from '@/components/programme';
+import NotreHistoire from '@/components/notre-histoire';
 
 
 function MountainVillageBackground() {
@@ -513,14 +505,11 @@ export default function Index() {
               <div className="h-[63vh]"></div>
           </section>
 
-          <section className='p-8 bg-black text-white h-screen sticky top-24 rounded-tr-2xl rounded-tl-2xl overflow-hidden'>
-            <div className="mr-0 flex flex-col w-full justify-end gap-4 font-poiret-one text-right text-6xl"><h2>Agathe Martin</h2><h2>& Alain Karinthi</h2></div>
-            <div className='flex justify-between mt-8'>
-            <div className='mt-24 font-urbanist text-3xl font-light'><p className='mb-4 text-2xl italic'>vous invitent</p><p>le 27 Septembre 2025</p><p>à 16h</p><p>à Trizac</p><p>Place de la Mairie</p></div>
-            </div>
+          <section id='programme' className='py-20 px-8 bg-black text-white h-screen sticky top-24 rounded-tr-2xl rounded-tl-2xl overflow-hidden'>
+              <Programme />
           </section>
 
-          {/*
+
           <section className='text-white  h-screen  w-full bg-slate-950 grid place-content-center sticky top-0'>
             <div className='absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]'></div>
             <h1 className='2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]'>
@@ -562,101 +551,17 @@ export default function Index() {
             </div>
           </div>
         </section>
-          */}
-        </div>
+        
       
-        <section className='text-white  w-full bg-slate-950  '>
-          <div className='grid grid-cols-2 px-8'>
-            <div className='grid gap-2'>
-              <figure className='sticky top-0 h-screen grid place-content-center'>
-                <img
-                  src='trizac-0.jpg'
-                  alt=''
-                  className='transition-all duration-300  w-124 h-96   align-bottom object-cover rounded-md'
-                />
-              </figure>              
-              <figure className='sticky top-0 h-screen grid place-content-center'>
-                <img
-                  src='trizac-1.jpg'
-                  alt=''
-                  className='transition-all duration-300  w-124 h-96   align-bottom object-cover rounded-md'
-                />
-              </figure>
-              <figure className='sticky top-0 h-screen grid place-content-center'>
-                <img
-                  src='trizac-2.jpg'
-                  alt=''
-                  className='transition-all duration-300  w-124 h-96   align-bottom object-cover rounded-md'
-                />
-              </figure>
-              <figure className='sticky top-0 h-screen grid place-content-center'>
-                <img
-                  src='trizac-3.jpg'
-                  alt=''
-                  className='transition-all duration-300  w-124 h-96   align-bottom object-cover rounded-md'
-                />          
-              </figure>
-              <figure className='sticky top-0 h-screen grid place-content-center'>
-                <img
-                  src='trizac-4.jpg'
-                  alt=''
-                  className='transition-all duration-300  w-124 h-96   align-bottom
-                  object-cover rounded-md'
-                />
-              </figure>                            
-              <figure className='sticky top-0 h-screen grid place-content-center'>
-                <img
-                  src='trizac-5.jpg'
-                  alt=''
-                  className='transition-all duration-300  w-124 h-96   align-bottom
-                  object-cover rounded-md'
-                />
-              </figure>              
-              <figure className='sticky top-0 h-screen grid place-content-center'>
-                <img
-                  src='trizac-6.jpg'
-                  alt=''
-                  className='transition-all duration-300  w-124 h-96   align-bottom
-                  object-cover rounded-md'
-                />
-              </figure>              
-              <figure className='sticky top-0 h-screen grid place-content-center'>
-                <img
-                  src='trizac-7.jpg'
-                  alt=''
-                  className='transition-all duration-300  w-124 h-96   align-bottom
-                  object-cover rounded-md'
-                />
-              </figure>              
-              <figure className='sticky top-0 h-screen grid place-content-center'>
-                <img
-                  src='trizac-8.jpg'
-                  alt=''
-                  className='transition-all duration-300  w-124 h-96   align-bottom
-                  object-cover rounded-md'
-                />
-              </figure>
-              <figure className='sticky top-0 h-screen grid place-content-center'>
-                <img
-                  src='trizac-9.jpg'
-                  alt=''
-                  className='transition-all duration-300  w-124 h-96   align-bottom
-                  object-cover rounded-md'
-                />
-              </figure>
-
-            </div>
-            <div className='sticky top-0 h-screen grid place-content-center'>
-              <h1 className='text-4xl px-8 font-medium text-right tracking-tight leading-[120%]'>
-                Copied & Paste Every Component you want and make an creative
-                website 😎
-              </h1>
-            </div>
-          </div>
+        <section className='text-white  w-full bg-black'>
+            <NotreHistoire  />
         </section>
+
+
+
         <footer className='group bg-slate-950 '>
           <h1 className='text-[16vw] group-hover:translate-y-4 translate-y-20 leading-[100%] uppercase font-semibold text-center bg-gradient-to-r from-gray-400 to-gray-800 bg-clip-text text-transparent transition-all ease-linear'>
-            ui-layout
+            A bientôt
           </h1>
           <section className='bg-black h-40 relative z-10 grid place-content-center text-2xl rounded-tr-full rounded-tl-full'>
             Thanks for Scrolling
