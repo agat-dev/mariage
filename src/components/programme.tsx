@@ -19,9 +19,6 @@ export default function Programme() {
           <p>à Trizac</p>
           <p>Place de la Mairie</p>
         </div>
-        <div className='col-span-2 mt-24 font-urbanist text-3xl font-light'>
-          <NotreHistoire />
-        </div>
       </div>
     </div>
   );
