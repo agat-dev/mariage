@@ -27,7 +27,10 @@ export default function NotreHistoire() {
     const containerHeight = window.innerHeight;
     const relativeScroll = Math.max(0, scrollY - containerTop);
     
-    // Chaque image a une zone de déclenchement de 50vh (plus rapide)
+    // Zone totale d'animation
+    const totalAnimationHeight = images.length * containerHeight * 0.5;
+    
+    // Chaque image a une zone de déclenchement de 50vh
     const imageStartScroll = index * containerHeight * 0.5;
     const imageEndScroll = (index + 1) * containerHeight * 0.5;
     
@@ -39,11 +42,21 @@ export default function NotreHistoire() {
     // Translation depuis la droite vers le centre
     const translateX = (1 - progress) * 100; // 100% à droite, 0% au centre
     
-    // Opacité progressive - la première image est visible dès le début
-    const opacity = index === 0 ? 1 : progress;
+    // Opacité progressive
+    let opacity;
+    if (index === 0) {
+      // La première image est toujours visible
+      opacity = 1;
+    } else if (relativeScroll >= totalAnimationHeight) {
+      // Après l'animation, toutes les images restent visibles
+      opacity = 1;
+    } else {
+      // Pendant l'animation
+      opacity = progress;
+    }
 
     return {
-      transform: `translateX(${translateX}%)`,
+      transform: relativeScroll >= totalAnimationHeight ? 'translateX(0%)' : `translateX(${translateX}%)`,
       opacity,
       zIndex: index + 1,
       transition: 'none'
