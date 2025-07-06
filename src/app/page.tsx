@@ -4,6 +4,8 @@ import { useEffect, useState, useRef } from "react";
 import confetti from "canvas-confetti";
 import { MorphingText } from "@/components/magicui/morphing-text";
 import Image from "next/image";
+import Hero from '@/components/hero';
+import Navbar from '@/components/navbar';
 
 const texts = [
   "Vous êtes",
@@ -493,15 +495,20 @@ export default function Index() {
     }, 600); // Délai de 800ms avant le déclenchement du scroll
   };
 
+
+
   return (
+    
     <>
     <ReactLenis root>
       <main className='bg-black'>
+        <Navbar />
         <div className='wrapper'>
           <section className='flex flex-col justify-center align-middle text-black h-screen w-full sticky top-0 overflow-hidden'>
-              <MountainVillageBackground />
+              {/* <MountainVillageBackground /> */}
               <div className="relative z-10">
-                <MorphingText texts={texts} className='text-black font-light' onFirstCycleComplete={handleFirstCycleComplete} onConfettiTrigger={handleConfettiTrigger}/>
+                <Hero />
+                {/*<MorphingText texts={texts} className='text-black font-light' onFirstCycleComplete={handleFirstCycleComplete} onConfettiTrigger={handleConfettiTrigger}/>*/}
               </div>
               <div className="h-[63vh]"></div>
           </section>
@@ -563,39 +570,81 @@ export default function Index() {
             <div className='grid gap-2'>
               <figure className='sticky top-0 h-screen grid place-content-center'>
                 <img
-                  src='mariage-1.jpg'
+                  src='trizac-0.jpg'
                   alt=''
                   className='transition-all duration-300  w-124 h-96   align-bottom object-cover rounded-md'
                 />
               </figure>              
               <figure className='sticky top-0 h-screen grid place-content-center'>
                 <img
-                  src='mariage-2.jpg'
+                  src='trizac-1.jpg'
                   alt=''
                   className='transition-all duration-300  w-124 h-96   align-bottom object-cover rounded-md'
+                />
+              </figure>
+              <figure className='sticky top-0 h-screen grid place-content-center'>
+                <img
+                  src='trizac-2.jpg'
+                  alt=''
+                  className='transition-all duration-300  w-124 h-96   align-bottom object-cover rounded-md'
+                />
+              </figure>
+              <figure className='sticky top-0 h-screen grid place-content-center'>
+                <img
+                  src='trizac-3.jpg'
+                  alt=''
+                  className='transition-all duration-300  w-124 h-96   align-bottom object-cover rounded-md'
+                />          
+              </figure>
+              <figure className='sticky top-0 h-screen grid place-content-center'>
+                <img
+                  src='trizac-4.jpg'
+                  alt=''
+                  className='transition-all duration-300  w-124 h-96   align-bottom
+                  object-cover rounded-md'
+                />
+              </figure>                            
+              <figure className='sticky top-0 h-screen grid place-content-center'>
+                <img
+                  src='trizac-5.jpg'
+                  alt=''
+                  className='transition-all duration-300  w-124 h-96   align-bottom
+                  object-cover rounded-md'
                 />
               </figure>              
               <figure className='sticky top-0 h-screen grid place-content-center'>
                 <img
-                  src='mariage-3.jpg'
+                  src='trizac-6.jpg'
                   alt=''
-                  className='transition-all duration-300  w-124 h-96   align-bottom object-cover rounded-md'
+                  className='transition-all duration-300  w-124 h-96   align-bottom
+                  object-cover rounded-md'
+                />
+              </figure>              
+              <figure className='sticky top-0 h-screen grid place-content-center'>
+                <img
+                  src='trizac-7.jpg'
+                  alt=''
+                  className='transition-all duration-300  w-124 h-96   align-bottom
+                  object-cover rounded-md'
+                />
+              </figure>              
+              <figure className='sticky top-0 h-screen grid place-content-center'>
+                <img
+                  src='trizac-8.jpg'
+                  alt=''
+                  className='transition-all duration-300  w-124 h-96   align-bottom
+                  object-cover rounded-md'
                 />
               </figure>
               <figure className='sticky top-0 h-screen grid place-content-center'>
                 <img
-                  src='mariage-4.jpg'
+                  src='trizac-9.jpg'
                   alt=''
-                  className='transition-all duration-300 w-124 h-96  align-bottom object-cover rounded-md'
+                  className='transition-all duration-300  w-124 h-96   align-bottom
+                  object-cover rounded-md'
                 />
               </figure>
-              <figure className='sticky top-0 h-screen grid place-content-center'>
-                <img
-                  src='mariage-5.png'
-                  alt=''
-                  className='transition-all duration-300  w-124 h-96   align-bottom object-cover rounded-md'
-                />
-              </figure>
+
             </div>
             <div className='sticky top-0 h-screen grid place-content-center'>
               <h1 className='text-4xl px-8 font-medium text-right tracking-tight leading-[120%]'>
