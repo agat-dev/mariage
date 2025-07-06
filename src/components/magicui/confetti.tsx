@@ -18,7 +18,6 @@ import React, {
 } from "react";
 
 import { Button, ButtonProps } from "@/components/ui/button";
-import { ShimmerButton } from "./shimmer-button";
 
 type Api = {
   fire: (options?: ConfettiOptions) => void;

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
 interface GoogleMapProps {
   className?: string;
@@ -9,7 +9,6 @@ interface GoogleMapProps {
 
 export default function GoogleMap({ className = '' }: GoogleMapProps) {
   // Suppression des états liés à la carte Google Maps
-  const [userLocation, setUserLocation] = useState<{lat: number, lng: number} | null>(null);
   const [distance, setDistance] = useState<string | null>(null);
   const [isGettingLocation, setIsGettingLocation] = useState(false);
 
@@ -43,7 +42,7 @@ export default function GoogleMap({ className = '' }: GoogleMapProps) {
   };
 
   // Fonction pour obtenir la géolocalisation
-  const getUserLocation = () => {
+  const getUserLocation = useCallback(() => {
     if (!navigator.geolocation) {
       console.log("La géolocalisation n'est pas supportée par ce navigateur.");
       return;
@@ -57,7 +56,6 @@ export default function GoogleMap({ className = '' }: GoogleMapProps) {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        setUserLocation(userCoords);
         
         // Calculer la distance
         const calculatedDistance = calculateDistance(
@@ -82,12 +80,12 @@ export default function GoogleMap({ className = '' }: GoogleMapProps) {
         maximumAge: 300000 // 5 minutes
       }
     );
-  };
+  }, []);
 
   // Obtenir la géolocalisation au chargement du composant
   useEffect(() => {
     getUserLocation();
-  }, []);
+  }, [getUserLocation]);
 
 
   const openDirections = () => {
@@ -113,7 +111,7 @@ export default function GoogleMap({ className = '' }: GoogleMapProps) {
       {distance && (
         <div className="mb-3 p-3 text-3xl">
           <p className="font-poiret-one text-white-900 font-bold text-center">
-            Vous n'êtes plus qu'à {distance} de Trizac
+            Vous n&apos;êtes plus qu&apos;à {distance} de Trizac
           </p>
         </div>
       )}

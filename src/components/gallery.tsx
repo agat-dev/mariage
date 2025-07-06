@@ -1,9 +1,8 @@
-// @ts-nocheck
 'use client';
 
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { motion, AnimateSharedLayout, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 
 type GalleryItem = {
@@ -42,7 +41,7 @@ function Gallery({ items, setIndex, setOpen, index }: GalleryProps) {
               }}
               onClick={() => {
                 setIndex(i);
-                // setOpen(true); // Désactivé - ouverture de la lightbox désactivée
+                setOpen(true);
               }}
               src={item?.url}
               layoutId={item.id}
@@ -54,7 +53,7 @@ function Gallery({ items, setIndex, setOpen, index }: GalleryProps) {
   );
 }
 
-export default function index() {
+export default function GalleryComponent() {
   const [index, setIndex] = useState(0);
   const [open, setOpen] = useState(false);
   

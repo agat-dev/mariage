@@ -4,8 +4,6 @@ import { TextAnimate } from "@/components/magicui/text-animate";
 
 
 export default function Hero() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [fadeStage, setFadeStage] = useState(0);
   const [lineVisible, setLineVisible] = useState([false, false, false, false, false]);
   const [barPosition, setBarPosition] = useState(-100);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -77,64 +75,6 @@ export default function Hero() {
       // Nettoyage des timers est automatique avec les setTimeout individuels
     };
   }, []);
-
-      const boxes = [
-    {
-      items: [
-        {
-          id: '12',
-          chart: '/trizac-0.jpg',
-          className: 'grid xl:col-span-1 col-start-1 col-end-3',
-        },
-        {
-            id: '22',
-            chart: '/trizac-1.jpg',
-            className: 'grid xl:col-span-1 col-start-3 col-end-6',  
-        },
-        {
-          id: '32',
-          chart: '/trizac-2.jpg',
-          className: 'grid xl:col-span-1 col-start-1 col-end-3',
-        },
-        {
-          id: '42',
-          chart: '/trizac-3.jpg',
-          className: 'grid xl:col-span-1 col-start-3 col-end-6',
-        },
-        {
-          id: '52',
-          chart: '/trizac-4.jpg',
-          className: 'grid xl:col-span-1 col-start-1 col-end-3',
-        },
-        {
-          id: '62',
-          chart: '/trizac-5.jpg',
-          className: 'grid xl:col-span-1 col-start-1 col-end-3',
-        },
-        {
-            id: '72',
-            chart: '/trizac-6.jpg',
-            className: 'grid xl:col-span-1 col-start-1 col-end-3',
-        },
-        {
-            id: '82',
-            chart: '/trizac-7.jpg',
-            className: 'grid xl:col-span-1 col-start-1 col-end-3',
-        },
-        {
-            id: '92',
-            chart: '/trizac-8.jpg',
-            className: 'grid xl:col-span-1 col-start-1 col-end-3',
-        },
-        {
-          id: '102',
-          chart: '/trizac-9.jpg',
-          className: 'grid xl:col-span-1 col-start-3 col-end-6',
-        }
-        ],
-        className: 'grid xl:grid-cols-6 grid-cols-3 gap-2',
-    },
-  ];
 
   return (
     <main className="relative h-screen w-screen overflow-hidden flex items-center justify-center flex-col">
@@ -321,7 +261,7 @@ export default function Hero() {
        <TextAnimate animation="blurIn" as="h1" className='font-poiret-one text-5xl text-white'>Agathe & Alain vous invitent à célébrer leur mariage</TextAnimate>
         <p className="text-white/80 font-bold font-poiret-one leading-tight mt-20 mb-10"
             style={{
-              fontSize: 'clamp(1rem, 4vw, 2rem)',
+              fontSize: 'clamp(1rem, 4vw, 2.4rem)',
               letterSpacing: '0.1em',
               opacity: lineVisible[2] ? 1 : 0,
               transform: `scale(${lineVisible[2] ? 1 : 0.9})`,
@@ -332,7 +272,7 @@ export default function Hero() {
         </p>
         <p className="text-white/80 font-poiret-one leading-tight mb-4"
             style={{  
-              fontSize: 'clamp(1rem, 4vw, 1.5rem)',
+              fontSize: 'clamp(1rem, 4vw, 2rem)',
               letterSpacing: '0.1em',
               opacity: lineVisible[3] ? 1 : 0,
               transform: `scale(${lineVisible[3] ? 1 : 0.9})`,
@@ -343,7 +283,7 @@ export default function Hero() {
         </p>
         <p className="text-white/80 font-poiret-one leading-tight"
             style={{
-              fontSize: 'clamp(1rem, 4vw, 1.5rem)',
+              fontSize: 'clamp(1rem, 4vw, 2rem)',
               letterSpacing: '0.1em',
               opacity: lineVisible[4] ? 1 : 0,
               transform: `scale(${lineVisible[4] ? 1 : 0.9})`,
@@ -353,229 +293,8 @@ export default function Hero() {
           Place de la mairie, à Trizac, Cantal
         </p>
 
-{/*}
-        <Gallery
-            items={boxes}
-            index={0}
-            setIndex={() => {}}
-            setOpen={() => {}}
-        />
-        */}
-        
-        {/* Main title avec style film muet 
-        <h1 className="text-white font-bellefair leading-tight mb-10"
-            style={{
-              fontSize: 'clamp(1rem, 4vw, 2rem)',
-              letterSpacing: '0.1em'
-            }}>
-          <span className="block mb-4" style={{ paddingLeft: '0px' }}>Agathe Martin</span>
-          <span className="block mb-4" style={{ 
-            fontSize: 'clamp(1.5rem, 5vw, 4rem)',
-            paddingRight: '20px' 
-          }}>&</span>
-          <span className="block mb-8" style={{ paddingLeft: '10px' }}>Alain Karinthi</span>
-        </h1>
-
-
-        <div className="text-white mb-8 italic font-serif"
-             style={{
-               fontSize: 'clamp(1.2rem, 4vw, 2rem)',
-               textShadow: '2px 2px 0px rgba(0,0,0,0.8)'
-             }}>
-          <span className="block" style={{ paddingLeft: '50px' }}>vous invitent à célébrer</span>
-          <span className="block mt-2" style={{ paddingRight: '50px' }}>leur mariage</span>
-        </div>
-
-
-        <div className="text-white mb-8 font-serif"
-             style={{
-               fontSize: 'clamp(1rem, 3vw, 1.5rem)',
-               textShadow: '2px 2px 0px rgba(0,0,0,0.8)'
-             }}>
-          <span className="block" style={{ paddingLeft: '30px' }}>le 27 Septembre 2025</span>
-          <span className="block mt-2" style={{ paddingRight: '30px' }}>à Trizac, Cantal</span>
-        </div>
-        */}
 
       </div>
-
-
-
-      <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bellefair:wght@400&display=swap');
-        .font-serif {
-          font-family: 'Bellefair', serif;
-        }
-        .font-bellefair {
-          font-family: 'Bellefair', serif;
-        }
-        
-        @keyframes flicker {
-          0% { opacity: 1; }
-          2% { opacity: 0.8; }
-          4% { opacity: 1; }
-          8% { opacity: 0.9; }
-          10% { opacity: 1; }
-          100% { opacity: 1; }
-        }
-        
-        @keyframes filmScratches {
-          0% { transform: translateX(0px); }
-          100% { transform: translateX(-20px); }
-        }
-        
-        @keyframes filmDamage {
-          0% { 
-            opacity: 0.15;
-            transform: translateY(0px);
-          }
-          25% { 
-            opacity: 0.25;
-            transform: translateY(-2px);
-          }
-          50% { 
-            opacity: 0.10;
-            transform: translateY(1px);
-          }
-          75% { 
-            opacity: 0.20;
-            transform: translateY(-1px);
-          }
-          100% { 
-            opacity: 0.15;
-            transform: translateY(0px);
-          }
-        }
-        
-        @keyframes crackle {
-          0% { 
-            opacity: 0.6;
-            transform: translate(0px, 0px);
-          }
-          10% { 
-            opacity: 1;
-            transform: translate(-2px, 2px);
-          }
-          20% { 
-            opacity: 0.4;
-            transform: translate(2px, -2px);
-          }
-          30% { 
-            opacity: 0.8;
-            transform: translate(-2px, -2px);
-          }
-          40% { 
-            opacity: 0.2;
-            transform: translate(2px, 2px);
-          }
-          50% { 
-            opacity: 1;
-            transform: translate(0px, -2px);
-          }
-          60% { 
-            opacity: 0.6;
-            transform: translate(-2px, 0px);
-          }
-          70% { 
-            opacity: 0.9;
-            transform: translate(2px, 0px);
-          }
-          80% { 
-            opacity: 0.3;
-            transform: translate(0px, 2px);
-          }
-          90% { 
-            opacity: 0.8;
-            transform: translate(-2px, -2px);
-          }
-          100% { 
-            opacity: 0.6;
-            transform: translate(0px, 0px);
-          }
-        }
-        
-        @keyframes finecrackle {
-          0% { 
-            opacity: 0.5;
-            transform: translate(0px, 0px) scale(1);
-          }
-          15% { 
-            opacity: 0.9;
-            transform: translate(-1px, 1px) scale(1.3);
-          }
-          30% { 
-            opacity: 0.3;
-            transform: translate(1px, -1px) scale(0.7);
-          }
-          45% { 
-            opacity: 0.7;
-            transform: translate(-1px, -1px) scale(1.1);
-          }
-          60% { 
-            opacity: 1;
-            transform: translate(1px, 1px) scale(0.9);
-          }
-          75% { 
-            opacity: 0.4;
-            transform: translate(0px, -1px) scale(1.2);
-          }
-          90% { 
-            opacity: 0.8;
-            transform: translate(-1px, 0px) scale(0.8);
-          }
-          100% { 
-            opacity: 0.5;
-            transform: translate(0px, 0px) scale(1);
-          }
-        }
-        
-        @keyframes cinematicFade {
-          0% { 
-            opacity: 0;
-            transform: scale(0.9) translateY(30px);
-            filter: blur(15px) brightness(0.3);
-          }
-          25% { 
-            opacity: 0.1;
-            transform: scale(0.95) translateY(20px);
-            filter: blur(8px) brightness(0.5);
-          }
-          50% { 
-            opacity: 0.4;
-            transform: scale(0.98) translateY(10px);
-            filter: blur(4px) brightness(0.8);
-          }
-          75% { 
-            opacity: 0.8;
-            transform: scale(1) translateY(5px);
-            filter: blur(1px) brightness(1.1);
-          }
-          100% { 
-            opacity: 1;
-            transform: scale(1) translateY(0px);
-            filter: blur(0px) brightness(1);
-          }
-        }
-        
-        @keyframes filmFadeIn {
-          0% { 
-            opacity: 0;
-            box-shadow: inset 0 0 100px rgba(0,0,0,0.9);
-          }
-          30% { 
-            opacity: 0.3;
-            box-shadow: inset 0 0 60px rgba(0,0,0,0.6);
-          }
-          60% { 
-            opacity: 0.7;
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
-          }
-          100% { 
-            opacity: 1;
-            box-shadow: inset 0 0 0px rgba(0,0,0,0);
-          }
-        }
-      `}</style>
     </main>
   );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import NotreHistoire from './notre-histoire';
 
 export default function Programme() {
   return (
@@ -10,13 +11,16 @@ export default function Programme() {
       </div>
       
       {/* Détails de l'invitation */}
-      <div className='flex justify-between mt-8'>
-        <div className='mt-24 font-urbanist text-3xl font-light'>
+      <div className='grid grid-cols-3 mt-8'>
+        <div className='col-span-1 mt-24 font-urbanist text-3xl font-light'>
           <p className='mb-4 text-2xl italic'>vous invitent</p>
           <p>le 27 Septembre 2025</p>
-          <p>à 16h</p>
+          <p>à 16h30</p>
           <p>à Trizac</p>
           <p>Place de la Mairie</p>
+        </div>
+        <div className='col-span-2 mt-24 font-urbanist text-3xl font-light'>
+          <NotreHistoire />
         </div>
       </div>
     </div>
