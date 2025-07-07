@@ -69,7 +69,7 @@ export default function Programme() {
             
             <div className='text-lg mb-4 relative pl-8'>
               <p>
-                Vin d'honneur à la Salle des Fêtes de Trizac
+                Vin d&apos;honneur à la Salle des Fêtes de Trizac
               </p>
             </div>
             
