@@ -140,7 +140,7 @@ export default function GoogleMap({ className = '' }: GoogleMapProps) {
   };
 
   return (
-    <div className={`w-10/12 relative ${className}`}>
+    <div className={`md:w-10/12 relative ${className}`}>
 
 
 

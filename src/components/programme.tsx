@@ -46,8 +46,8 @@ export default function Programme() {
  </div>
         
         {/* Contenu dans une grid */}
-        <div className='grid md:grid-cols-3 gap-8 md:gap-12 relative z-10'>
-          <div className='col-span-1 md:mt-6 font-urbanist text-3xl font-light'>
+        <div className='lg:grid lg:grid-cols-3 gap-8 md:gap-12 relative z-10'>
+          <div className='col-span-1 mx-auto font-urbanist text-3xl font-light'>
             <div className='text-4xl text-center font-bold mb-12 font-poiret-one relative'>
               Programme du mariage
               
@@ -60,20 +60,20 @@ export default function Programme() {
             </div>
             
             {/* Étapes du programme avec icônes décoratives */}
-            <div className='text-lg mb-4 relative pl-8'>
+            <div className='text-lg text-center mb-4 relative pl-8'>
              
               <p>
                 Cérémonie civile à la Mairie de Trizac
               </p>
             </div>
             
-            <div className='text-lg mb-4 relative pl-8'>
+            <div className='text-lg text-center mb-4 relative pl-8'>
               <p>
                 Vin d&apos;honneur à la Salle des Fêtes de Trizac
               </p>
             </div>
             
-            <div className='text-lg mb-4 relative pl-8'>
+            <div className='text-lg text-center mb-4 relative pl-8'>
               <p>
                 Repas de mariage à la Salle des Fêtes de Trizac
               </p>
@@ -99,7 +99,7 @@ export default function Programme() {
             </div>
           </div>
           
-          <div className='md:col-span-2 col-span-1 flex justify-center md:justify-end items-center'>
+          <div className='md:col-span-2 col-span-1 lg:pt-0 pt-12 flex justify-center md:justify-end items-center'>
             {/* Image sans décoration */}
             <img
               src="/mariage-5.png"

@@ -141,7 +141,7 @@ export default function Navbar({ className = "" }: NavbarProps) {
 
         {/* Menu mobile */}
         <motion.div
-          className={`md:hidden overflow-hidden ${
+          className={`absolute md:hidden overflow-hidden ${
             isMobileMenuOpen ? "max-h-64" : "max-h-0"
           }`}
           initial={false}

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 
 export default function NotreHistoire() {
   const [scrollY, setScrollY] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Liste des images pour la galerie
@@ -14,10 +15,43 @@ export default function NotreHistoire() {
   ];
 
   useEffect(() => {
+    // Détecter si on est sur mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
+
+  // Version mobile : affichage simple des images
+  if (isMobile) {
+    return (
+      <div className="relative bg-black py-16 px-4">
+        <div className="mx-auto space-y-8">
+          {images.map((image, index) => (
+            <div key={index} className="w-full">
+              <img
+                src={`/${image}`}
+                alt={`Notre histoire ${index + 1}`}
+                className="w-full h-80 object-cover rounded-lg shadow-2xl"
+              />
+            </div>
+          ))}
+          
+
+        </div>
+      </div>
+    );
+  }
 
   // Calculer la position et l'opacité de chaque image en fonction du scroll
   const getImageStyle = (index: number) => {
