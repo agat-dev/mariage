@@ -47,7 +47,7 @@ export default function Index() {
 
 
 
-        <footer id="contact" className='group bg-slate-950 '>
+        <footer id="contact" className='md:h-max h-[40vh] group bg-slate-950 '>
 
           <section className='flex md:flex-row flex-col gap-4 pb-12 md:pt-0 pt-36 justify-center items-center text-center bg-black h-40 relative z-10 text-2xl rounded-tr-full rounded-tl-full'>
             <a href="mailto:am.agathe.martin@gmail.com" className="text-white font-poiret-one tracking-wider hover:underline">Mail</a>

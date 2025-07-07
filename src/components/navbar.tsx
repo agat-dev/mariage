@@ -19,6 +19,7 @@ export default function Navbar({ className = "" }: NavbarProps) {
   }, []);
 
   const navItems = [
+    { name: "Invitation", href: "#invitation" },
     { name: "Programme", href: "#programme" },
     { name: "Venir à Trizac", href: "#venir" },
     { name: "Liens & Contact", href: "#contact" },
@@ -141,34 +142,66 @@ export default function Navbar({ className = "" }: NavbarProps) {
 
         {/* Menu mobile */}
         <motion.div
-          className={`absolute md:hidden overflow-hidden ${
-            isMobileMenuOpen ? "max-h-64" : "max-h-0"
+          className={`fixed inset-0 bg-black z-50 md:hidden ${
+            isMobileMenuOpen ? "" : "pointer-events-none"
           }`}
           initial={false}
           animate={{
-            maxHeight: isMobileMenuOpen ? 256 : 0,
             opacity: isMobileMenuOpen ? 1 : 0,
           }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-black/90 backdrop-blur-md rounded-b-lg">
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                className="text-white/80 hover:text-white block px-3 py-2 text-base font-poiret-one tracking-wide transition-colors duration-200"
+          <div className="h-full flex flex-col">
+            {/* Header avec croix de fermeture */}
+            <div className="flex justify-between items-center p-4 border-b border-white/10">
+              <img
+                className="h-8 w-auto rounded-sm"
+                src="/mariage-5.png"
+                alt="Logo"
+                width={24}
+                height={24}
+              />
+              <motion.button
                 onClick={() => setIsMobileMenuOpen(false)}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{
-                  opacity: isMobileMenuOpen ? 1 : 0,
-                  x: isMobileMenuOpen ? 0 : -20,
-                }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className="text-white hover:text-white/80 focus:outline-none transition-colors duration-200"
                 whileTap={{ scale: 0.95 }}
               >
-                {item.name}
-              </motion.a>
-            ))}
+                <svg
+                  className="h-6 w-6"
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </motion.button>
+            </div>
+
+            {/* Navigation links */}
+            <div className="flex flex-col pt-8 px-4 space-y-6">
+              {navItems.map((item, index) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  className="text-white/80 hover:text-white text-2xl font-poiret-one tracking-wide transition-colors duration-200 py-4 border-b border-white/10"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{
+                    opacity: isMobileMenuOpen ? 1 : 0,
+                    x: isMobileMenuOpen ? 0 : -20,
+                  }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {item.name}
+                </motion.a>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>

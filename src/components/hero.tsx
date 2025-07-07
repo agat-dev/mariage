@@ -250,11 +250,22 @@ export default function Hero() {
       {/* Title container */}
       <div className="relative z-40 text-center px-8 space-y-4">   
 
-       <TextAnimate animation="blurIn" as="h1" className='font-poiret-one md:text-5xl text-3xl text-white'>Agathe Martin & Alain Karinthi vous invitent </TextAnimate>
-       <TextAnimate animation="blurIn" as="h1" className='font-poiret-one md:text-5xl text-3xl text-white'>à célébrer leur mariage</TextAnimate>
-        <p className="text-white/80 font-bold font-poiret-one leading-tight mt-20 mb-10"
+       <TextAnimate animation="blurIn" as="h1" className='font-poiret-one md:text-5xl text-3xl text-white'>Agathe Martin</TextAnimate>
+       <TextAnimate animation="blurIn" as="h1" className='font-poiret-one md:text-6xl text-4xl text-white'> &</TextAnimate>
+       <TextAnimate animation="blurIn" as="h1" className='font-poiret-one md:text-5xl text-3xl text-white'>Alain Karinthi</TextAnimate>
+       <p className="text-white/80 font-poiret-one leading-tight mt-10 mb-10"
             style={{
-              fontSize: 'clamp(2rem, 4vw, 2.4rem)',
+              fontSize: 'clamp(1.5rem, 4vw, 2.4rem)',
+              letterSpacing: '0.1em',
+              opacity: lineVisible[1] ? 1 : 0,
+              transform: `scale(${lineVisible[1] ? 1 : 0.9})`,
+              filter: `blur(${lineVisible[1] ? '0px' : '8px'})`,
+              transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}>       
+       vous invitent à célébrer leur mariage</p>
+        <p className="text-white/80 font-bold font-poiret-one leading-tight mt-10 mb-10"
+            style={{
+              fontSize: 'clamp(1.7rem, 4vw, 2.4rem)',
               letterSpacing: '0.1em',
               opacity: lineVisible[2] ? 1 : 0,
               transform: `scale(${lineVisible[2] ? 1 : 0.9})`,
@@ -263,7 +274,7 @@ export default function Hero() {
             }}>
           le 27 Septembre 2025
         </p>
-        <p className="text-white/80 font-poiret-one leading-tight mb-4"
+        <p className="text-white/80 font-poiret-one leading-tight mb-1"
             style={{  
               fontSize: 'clamp(1.5rem, 4vw, 2rem)',
               letterSpacing: '0.1em',

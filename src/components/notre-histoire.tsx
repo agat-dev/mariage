@@ -17,7 +17,7 @@ export default function NotreHistoire() {
   useEffect(() => {
     // Détecter si on est sur mobile
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 1024);
     };
     
     checkMobile();
@@ -128,7 +128,7 @@ export default function NotreHistoire() {
               <img
                 src={`/${image}`}
                 alt={`Notre histoire ${index + 1}`}
-                className="w-96 h-96 object-cover rounded-lg shadow-2xl"
+                className="w-164 h-164 object-cover rounded-lg shadow-2xl"
               />
             </div>
           ))}
