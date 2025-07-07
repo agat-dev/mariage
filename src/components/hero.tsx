@@ -5,25 +5,45 @@ import { TextAnimate } from "@/components/magicui/text-animate";
 
 export default function Hero() {
   const [lineVisible, setLineVisible] = useState([false, false, false, false, false]);
+  const [decorVisible, setDecorVisible] = useState({
+    topDecor: false,
+    betweenNames: false,
+    afterNames: false,
+    finalDecor: false,
+    corners: false
+  });
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Animation d'apparition progressive des lignes
-    const lineSequence = [
+    // Animation d'apparition progressive des lignes et éléments décoratifs
+    const animationSequence = [
       { delay: 500, line: 0 },   // Première ligne
+      { delay: 800, decor: 'topDecor' },  // Décoration supérieure
       { delay: 1200, line: 1 },  // Deuxième ligne
+      { delay: 1400, decor: 'betweenNames' },  // Ornement entre les noms
       { delay: 1900, line: 2 },  // Troisième ligne
+      { delay: 2100, decor: 'afterNames' },  // Décoration après les noms
       { delay: 2600, line: 3 },  // Quatrième ligne
-      { delay: 3300, line: 4 }   // Cinquième ligne
+      { delay: 3300, line: 4 },  // Cinquième ligne
+      { delay: 3800, decor: 'finalDecor' },  // Décoration finale
+      { delay: 4200, decor: 'corners' }  // Éléments d'angle
     ];
 
-    lineSequence.forEach(({ delay, line }) => {
+    animationSequence.forEach(({ delay, line, decor }) => {
       setTimeout(() => {
-        setLineVisible(prev => {
-          const newVisible = [...prev];
-          newVisible[line] = true;
-          return newVisible;
-        });
+        if (line !== undefined) {
+          setLineVisible(prev => {
+            const newVisible = [...prev];
+            newVisible[line] = true;
+            return newVisible;
+          });
+        }
+        if (decor) {
+          setDecorVisible(prev => ({
+            ...prev,
+            [decor]: true
+          }));
+        }
       }, delay);
     });
 
@@ -250,9 +270,79 @@ export default function Hero() {
       {/* Title container */}
       <div className="relative z-40 text-center px-8 space-y-4">   
 
+       {/* Décoration art déco supérieure */}
+       <div className="flex justify-center items-center mb-8"
+            style={{
+              opacity: decorVisible.topDecor ? 1 : 0,
+              transform: `scale(${decorVisible.topDecor ? 1 : 0.8}) translateY(${decorVisible.topDecor ? 0 : -20}px)`,
+              filter: `blur(${decorVisible.topDecor ? '0px' : '4px'})`,
+              transition: 'all 1.8s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}>
+         <div className="flex items-center space-x-4">
+           {/* Motif géométrique gauche */}
+           <div className="relative">
+             <div className="w-16 h-0.5 bg-gradient-to-r from-transparent to-white/60"></div>
+             <div className="absolute -top-1 right-0 w-3 h-3 border-t border-r border-white/40 transform rotate-45"></div>
+             <div className="absolute -top-0.5 right-2 w-1.5 h-1.5 border-t border-r border-white/60 transform rotate-45"></div>
+           </div>
+           
+           {/* Losange central */}
+           <div className="relative">
+             <div className="w-4 h-4 border border-white/50 transform rotate-45"></div>
+             <div className="absolute inset-1 w-2 h-2 bg-white/20 transform rotate-45"></div>
+           </div>
+           
+           {/* Motif géométrique droite */}
+           <div className="relative">
+             <div className="w-16 h-0.5 bg-gradient-to-l from-transparent to-white/60"></div>
+             <div className="absolute -top-1 left-0 w-3 h-3 border-t border-l border-white/40 transform -rotate-45"></div>
+             <div className="absolute -top-0.5 left-2 w-1.5 h-1.5 border-t border-l border-white/60 transform -rotate-45"></div>
+           </div>
+         </div>
+       </div>
+
        <TextAnimate animation="blurIn" as="h1" className='font-poiret-one md:text-5xl text-3xl text-white'>Agathe Martin</TextAnimate>
-       <TextAnimate animation="blurIn" as="h1" className='font-poiret-one md:text-6xl text-4xl text-white'> &</TextAnimate>
+       
+       {/* Ornement entre les noms */}
+       <div className="flex justify-center py-2"
+            style={{
+              opacity: decorVisible.betweenNames ? 1 : 0,
+              transform: `translateY(${decorVisible.betweenNames ? 0 : 20}px) scale(${decorVisible.betweenNames ? 1 : 0.6})`,
+              filter: `blur(${decorVisible.betweenNames ? '0px' : '6px'})`,
+              transition: 'all 1.5s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}>
+         <div className="flex items-center space-x-3">
+        <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-white/40"></div>
+       <TextAnimate animation="blurIn" as="h1" className='font-poiret-one md:text-6xl text-4xl text-white'>&</TextAnimate>
+
+           <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-white/40"></div>
+          </div>
+       </div>
+       
+       
        <TextAnimate animation="blurIn" as="h1" className='font-poiret-one md:text-5xl text-3xl text-white'>Alain Karinthi</TextAnimate>
+       
+       {/* Décoration art déco après les noms */}
+       <div className="flex justify-center items-center mt-8 mb-6"
+            style={{
+              opacity: decorVisible.afterNames ? 1 : 0,
+              transform: `scale(${decorVisible.afterNames ? 1 : 0.5}) translateY(${decorVisible.afterNames ? 0 : 40}px) rotate(${decorVisible.afterNames ? 0 : 10}deg)`,
+              filter: `blur(${decorVisible.afterNames ? '0px' : '8px'})`,
+              transition: 'all 2s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}>
+         <div className="relative">
+           {/* Éventail art déco */}
+           <div className="flex space-x-1">
+             <div className="w-0.5 h-8 bg-gradient-to-t from-white/20 to-white/60 transform -rotate-12"></div>
+             <div className="w-0.5 h-10 bg-gradient-to-t from-white/30 to-white/70 transform -rotate-6"></div>
+             <div className="w-0.5 h-12 bg-gradient-to-t from-white/40 to-white/80"></div>
+             <div className="w-0.5 h-10 bg-gradient-to-t from-white/30 to-white/70 transform rotate-6"></div>
+             <div className="w-0.5 h-8 bg-gradient-to-t from-white/20 to-white/60 transform rotate-12"></div>
+           </div>
+           {/* Base de l'éventail */}
+           <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-white/50"></div>
+         </div>
+       </div>
        <p className="text-white/80 font-poiret-one leading-tight mt-10 mb-10"
             style={{
               fontSize: 'clamp(1.5rem, 4vw, 2.4rem)',
@@ -276,7 +366,7 @@ export default function Hero() {
         </p>
         <p className="text-white/80 font-poiret-one leading-tight mb-1"
             style={{  
-              fontSize: 'clamp(1.5rem, 4vw, 2rem)',
+              fontSize: 'clamp(1.2rem, 4vw, 2rem)',
               letterSpacing: '0.1em',
               opacity: lineVisible[3] ? 1 : 0,
               transform: `scale(${lineVisible[3] ? 1 : 0.9})`,
@@ -287,7 +377,7 @@ export default function Hero() {
         </p>
         <p className="text-white/80 font-poiret-one leading-tight"
             style={{
-              fontSize: 'clamp(1.5rem, 4vw, 2rem)',
+              fontSize: 'clamp(1.2rem, 4vw, 2rem)',
               letterSpacing: '0.1em',
               opacity: lineVisible[4] ? 1 : 0,
               transform: `scale(${lineVisible[4] ? 1 : 0.9})`,
@@ -297,7 +387,101 @@ export default function Hero() {
           Place de la mairie, à Trizac, Cantal
         </p>
 
-
+        {/* Décoration art déco finale */}
+        <div className="flex justify-center items-center mt-12 pt-8"
+             style={{
+               opacity: decorVisible.finalDecor ? 1 : 0,
+               transform: `scale(${decorVisible.finalDecor ? 1 : 0.7}) translateY(${decorVisible.finalDecor ? 0 : 50}px)`,
+               filter: `blur(${decorVisible.finalDecor ? '0px' : '10px'})`,
+               transition: 'all 2.2s cubic-bezier(0.4, 0, 0.2, 1)'
+             }}>
+          <div className="flex items-center space-x-6">
+            {/* Motif escalier gauche */}
+            <div className="flex flex-col items-end space-y-0.5">
+              <div className="w-8 h-0.5 bg-white/40"></div>
+              <div className="w-6 h-0.5 bg-white/50"></div>
+              <div className="w-4 h-0.5 bg-white/60"></div>
+              <div className="w-2 h-0.5 bg-white/70"></div>
+            </div>
+            
+            {/* Élément central complexe */}
+            <div className="relative">
+              <div className="w-6 h-6 border border-white/50 transform rotate-45"></div>
+              <div className="absolute inset-2 w-2 h-2 border border-white/70 transform rotate-45"></div>
+              <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0.5 h-4 bg-white/40"></div>
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0.5 h-4 bg-white/40"></div>
+            </div>
+            
+            {/* Motif escalier droite */}
+            <div className="flex flex-col items-start space-y-0.5">
+              <div className="w-8 h-0.5 bg-white/40"></div>
+              <div className="w-6 h-0.5 bg-white/50"></div>
+              <div className="w-4 h-0.5 bg-white/60"></div>
+              <div className="w-2 h-0.5 bg-white/70"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Éléments décoratifs d'angle art déco */}
+      <div className="absolute top-8 left-8 z-30"
+           style={{
+             opacity: decorVisible.corners ? 1 : 0,
+             transform: `scale(${decorVisible.corners ? 1 : 0.3}) translate(${decorVisible.corners ? 0 : -20}px, ${decorVisible.corners ? 0 : -20}px)`,
+             filter: `blur(${decorVisible.corners ? '0px' : '8px'})`,
+             transition: 'all 2.5s cubic-bezier(0.4, 0, 0.2, 1)'
+           }}>
+        <div className="relative">
+          <div className="w-12 h-0.5 bg-gradient-to-r from-white/60 to-transparent"></div>
+          <div className="w-0.5 h-12 bg-gradient-to-b from-white/60 to-transparent"></div>
+          <div className="absolute top-4 left-4 w-4 h-0.5 bg-white/40"></div>
+          <div className="absolute top-4 left-4 w-0.5 h-4 bg-white/40"></div>
+        </div>
+      </div>
+      
+      <div className="absolute top-8 right-8 z-30"
+           style={{
+             opacity: decorVisible.corners ? 1 : 0,
+             transform: `scale(${decorVisible.corners ? 1 : 0.3}) translate(${decorVisible.corners ? 0 : 20}px, ${decorVisible.corners ? 0 : -20}px)`,
+             filter: `blur(${decorVisible.corners ? '0px' : '8px'})`,
+             transition: 'all 2.5s cubic-bezier(0.4, 0, 0.2, 1) 0.2s'
+           }}>
+        <div className="relative">
+          <div className="w-12 h-0.5 bg-gradient-to-l from-white/60 to-transparent"></div>
+          <div className="absolute right-0 w-0.5 h-12 bg-gradient-to-b from-white/60 to-transparent"></div>
+          <div className="absolute top-4 right-4 w-4 h-0.5 bg-white/40"></div>
+          <div className="absolute top-4 right-4 w-0.5 h-4 bg-white/40"></div>
+        </div>
+      </div>
+      
+      <div className="absolute bottom-8 left-8 z-30"
+           style={{
+             opacity: decorVisible.corners ? 1 : 0,
+             transform: `scale(${decorVisible.corners ? 1 : 0.3}) translate(${decorVisible.corners ? 0 : -20}px, ${decorVisible.corners ? 0 : 20}px)`,
+             filter: `blur(${decorVisible.corners ? '0px' : '8px'})`,
+             transition: 'all 2.5s cubic-bezier(0.4, 0, 0.2, 1) 0.4s'
+           }}>
+        <div className="relative">
+          <div className="w-0.5 h-12 bg-gradient-to-t from-white/60 to-transparent"></div>
+          <div className="absolute bottom-0 w-12 h-0.5 bg-gradient-to-r from-white/60 to-transparent"></div>
+          <div className="absolute bottom-4 left-4 w-4 h-0.5 bg-white/40"></div>
+          <div className="absolute bottom-4 left-4 w-0.5 h-4 bg-white/40"></div>
+        </div>
+      </div>
+      
+      <div className="absolute bottom-8 right-8 z-30"
+           style={{
+             opacity: decorVisible.corners ? 1 : 0,
+             transform: `scale(${decorVisible.corners ? 1 : 0.3}) translate(${decorVisible.corners ? 0 : 20}px, ${decorVisible.corners ? 0 : 20}px)`,
+             filter: `blur(${decorVisible.corners ? '0px' : '8px'})`,
+             transition: 'all 2.5s cubic-bezier(0.4, 0, 0.2, 1) 0.6s'
+           }}>
+        <div className="relative">
+          <div className="absolute right-0 w-0.5 h-12 bg-gradient-to-t from-white/60 to-transparent"></div>
+          <div className="absolute bottom-0 right-0 w-12 h-0.5 bg-gradient-to-l from-white/60 to-transparent"></div>
+          <div className="absolute bottom-4 right-4 w-4 h-0.5 bg-white/40"></div>
+          <div className="absolute bottom-4 right-4 w-0.5 h-4 bg-white/40"></div>
+        </div>
       </div>
     </main>
   );
