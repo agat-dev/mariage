@@ -47,7 +47,7 @@ export default function Index() {
 
 
 
-        <footer id="contact" className='md:h-max h-[40vh] group bg-slate-950 '>
+        <footer id="contact" className='md:h-max h-[45vh] group bg-slate-950 '>
 
           <section className='flex md:flex-row flex-col gap-4 pb-12 md:pt-0 pt-36 justify-center items-center text-center bg-black h-40 relative z-10 text-2xl rounded-tr-full rounded-tl-full'>
             <a href="mailto:am.agathe.martin@gmail.com" className="text-white font-poiret-one tracking-wider hover:underline">Mail</a>
@@ -68,14 +68,14 @@ export default function Index() {
             <a href="https://open.spotify.com/playlist/55QbUOCQ3lDyTkITkJlo3R?si=4bf0f57c511a4eac&pt=5d6985ad0c4e9ab5a185cbb4c1e2b8a7" className="text-white font-poiret-one tracking-wider hover:underline">Contribuer à la playlist Spotify</a>        
                         
                         
-           {/* <div className="hidden md:flex items-center justify-center">
+            <div className="md:flex items-center justify-center">
                 <div className="relative">
                     <div className="w-2 h-2 border-2 border-amber-400/60 rotate-45"></div>
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 rounded-full"></div>
                 </div>
               </div>
-            <a href="#" className="text-white font-poiret-one text-base tracking-wider hover:underline">Cagnotte Cadeau</a>        
-              */}
+            <a href="https://www.leetchi.com/c/mariage-da-agathe-et-alain-1519924?utm_source=native&utm_medium=social_sharing" className="text-white font-poiret-one tracking-wider hover:underline">Cagnotte Cadeau</a>        
+              
           </section>
         </footer>
       </main>
