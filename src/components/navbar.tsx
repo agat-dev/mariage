@@ -61,8 +61,8 @@ export default function Navbar({ className = "" }: NavbarProps) {
             transition={{ duration: 0.2 }}
           >
             <img
-              className="h-8 w-auto"
-              src="/logo.png"
+              className="h-8 w-auto rounded-sm"
+              src="/mariage-5.png"
               alt="Logo"
               width={24}
               height={24}
