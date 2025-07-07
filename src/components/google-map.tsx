@@ -270,7 +270,7 @@ export default function GoogleMap({ className = '' }: GoogleMapProps) {
       {distance && (
         <div className="mt-10 md:p-1 text-xl">
           <p className="font-poiret-one text-white-900 font-bold text-center">
-           Les oiseaux sont à {distance} de Trizac
+            Vous n&apos;êtes plus qu&apos;à {distance} de Trizac
           </p>
         </div>
       )}
