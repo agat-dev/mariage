@@ -373,7 +373,7 @@ export default function Hero() {
               filter: `blur(${lineVisible[3] ? '0px' : '8px'})`,
               transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)'
             }}>
-              à 16h30
+              à 16h
         </p>
         <p className="text-white/80 font-poiret-one leading-tight"
             style={{

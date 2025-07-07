@@ -63,7 +63,7 @@ export default function Programme() {
             <div className='text-lg text-center mb-4 relative pl-8'>
              
               <p>
-                Cérémonie civile à la Mairie de Trizac
+                16h : Cérémonie civile à la Mairie de Trizac
               </p>
             </div>
             
