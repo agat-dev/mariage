@@ -28,12 +28,12 @@ export default function Index() {
               </div>
           </section>
 
-          <section id='programme' className='h-screen py-20 md:px-8 px-0 bg-black text-white sticky top-0 rounded-tr-2xl rounded-tl-2xl overflow-hidden'>
+          <section id='programme' className='md:h-screen h-[120vh] py-20 md:px-8 px-0 bg-black text-white sticky top-0 rounded-tr-2xl rounded-tl-2xl overflow-hidden'>
               <Programme />
           </section>
 
 
-          <section id='venir' className='text-white  h-screen mb-16 p-6 bg-slate-950 grid place-content-center sticky top-0'>
+          <section id='venir' className='text-white md:h-screen h-[120vh] mb-16 p-6 bg-slate-950 grid place-content-center sticky top-0'>
             <GoogleMap 
                 className="w-full"
               />
@@ -49,17 +49,17 @@ export default function Index() {
 
         <footer id="contact" className='group bg-slate-950 '>
 
-          <section className='flex md:flex-row flex-col gap-4 pb-12 justify-center items-center text-center bg-black h-40 relative z-10 text-2xl rounded-tr-full rounded-tl-full'>
+          <section className='flex md:flex-row flex-col gap-4 pb-12 md:pt-0 pt-36 justify-center items-center text-center bg-black h-40 relative z-10 text-2xl rounded-tr-full rounded-tl-full'>
             <a href="mailto:am.agathe.martin@gmail.com" className="text-white font-poiret-one tracking-wider hover:underline">Mail</a>
                           {/* Séparateur losange Art Déco */}
-              <div className="hidden md:flex items-center justify-center">
+              <div className="md:flex items-center justify-center">
                 <div className="relative">
                     <div className="w-2 h-2 border-2 border-amber-400/60 rotate-45"></div>
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 rounded-full"></div>
                 </div>
               </div>
             <a href="tel:0673981638" className="text-white font-poiret-one tracking-wider hover:underline">Téléphone</a>
-              <div className="hidden md:flex items-center justify-center">
+              <div className="md:flex items-center justify-center">
                 <div className="relative">
                     <div className="w-2 h-2 border-2 border-amber-400/60 rotate-45"></div>
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 rounded-full"></div>

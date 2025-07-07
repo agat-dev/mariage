@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Programme() {
   return (
-    <div className="w-[90%] mx-auto">
+    <div className="w-[100%] mx-auto">
       
       {/* Détails de l'invitation */}
       <div className='relative p-8 md:p-12 rounded-xl shadow-lg border border-amber-200/30 overflow-hidden'>
