@@ -5,7 +5,6 @@ import { TextAnimate } from "@/components/magicui/text-animate";
 
 export default function Hero() {
   const [lineVisible, setLineVisible] = useState([false, false, false, false, false]);
-  const [barPosition, setBarPosition] = useState(-100);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -27,18 +26,6 @@ export default function Hero() {
         });
       }, delay);
     });
-
-    // Animation de la barre verticale qui traverse l'écran
-    const animateBar = () => {
-      setBarPosition(prev => {
-        if (prev > window.innerWidth + 100) {
-          return -100; // Remet la barre à gauche quand elle sort à droite
-        }
-        return prev + 2; // Vitesse de déplacement
-      });
-      requestAnimationFrame(animateBar);
-    };
-    animateBar();
 
     // Animation du bruit de fond sur canvas
     const canvas = canvasRef.current;

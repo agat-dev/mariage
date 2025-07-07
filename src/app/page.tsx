@@ -1,6 +1,5 @@
 'use client';
 import { ReactLenis } from 'lenis/react';
-import Gallery from "@/components/gallery";
 import Hero from '@/components/hero';
 import Navbar from '@/components/navbar';
 import Programme from '@/components/programme';
@@ -34,7 +33,7 @@ export default function Index() {
           </section>
 
 
-          <section id='venir' className='text-white  h-screen  w-screen bg-slate-950 grid place-content-center sticky top-0'>
+          <section id='venir' className='text-white  h-screen mb-16  w-screen bg-slate-950 grid place-content-center sticky top-0'>
             <GoogleMap 
                 className="w-full"
               />
@@ -48,12 +47,35 @@ export default function Index() {
 
 
 
-        <footer className='group bg-slate-950 '>
-          <h1 className='text-[16vw] group-hover:translate-y-4 translate-y-20 leading-[100%] uppercase font-semibold text-rose-300/5 text-center bg-gradient-to-r from-gray-400 to-gray-800 bg-clip-text transition-all ease-linear'>
-            A bientôt
-          </h1>
-          <section className='bg-black h-40 relative z-10 grid place-content-center text-2xl rounded-tr-full rounded-tl-full'>
-            Thanks for Scrolling
+        <footer id="contact" className='group bg-slate-950 '>
+
+          <section className='flex gap-4 justify-center items-center bg-black h-40 relative z-10 text-2xl rounded-tr-full rounded-tl-full'>
+            <a href="mailto:am.agathe.martin@gmail.com" className="text-white font-poiret-one text-base tracking-wider hover:underline">Mail</a>
+                          {/* Séparateur losange Art Déco */}
+              <div className="hidden md:flex items-center justify-center">
+                <div className="relative">
+                    <div className="w-2 h-2 border-2 border-amber-400/60 rotate-45"></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 rounded-full"></div>
+                </div>
+              </div>
+            <a href="tel:0673981638" className="text-white font-poiret-one text-base tracking-wider hover:underline">Téléphone</a>
+                        <div className="hidden md:flex items-center justify-center">
+                <div className="relative">
+                    <div className="w-2 h-2 border-2 border-amber-400/60 rotate-45"></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 rounded-full"></div>
+                </div>
+              </div>
+            <a href="https://open.spotify.com/playlist/55QbUOCQ3lDyTkITkJlo3R?si=4bf0f57c511a4eac&pt=5d6985ad0c4e9ab5a185cbb4c1e2b8a7" className="text-white font-poiret-one text-base tracking-wider hover:underline">Contribuer à la playlist Spotify</a>        
+                        
+                        
+           {/* <div className="hidden md:flex items-center justify-center">
+                <div className="relative">
+                    <div className="w-2 h-2 border-2 border-amber-400/60 rotate-45"></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 rounded-full"></div>
+                </div>
+              </div>
+            <a href="#" className="text-white font-poiret-one text-base tracking-wider hover:underline">Cagnotte Cadeau</a>        
+              */}
           </section>
         </footer>
       </main>

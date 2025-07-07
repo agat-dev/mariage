@@ -21,7 +21,7 @@ export default function Navbar({ className = "" }: NavbarProps) {
   const navItems = [
     { name: "Programme", href: "#programme" },
     { name: "Venir à Trizac", href: "#venir" },
-    { name: "Contact", href: "#rsvp" },
+    { name: "Liens & Contact", href: "#contact" },
   ];
 
   return (
@@ -29,7 +29,7 @@ export default function Navbar({ className = "" }: NavbarProps) {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`transition-all duration-300 ${
         isScrolled ? "bg-black/80 backdrop-blur-md shadow-lg" : "bg-transparent"
       } ${className}`}
     >
@@ -60,9 +60,13 @@ export default function Navbar({ className = "" }: NavbarProps) {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <h1 className="text-white font-poiret-one text-xl md:text-2xl font-bold tracking-wider">
-              A & A
-            </h1>
+            <img
+              className="h-8 w-auto"
+              src="/logo.png"
+              alt="Logo"
+              width={24}
+              height={24}
+            />
           </motion.div>
 
           {/* Navigation Desktop */}
