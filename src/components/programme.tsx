@@ -97,7 +97,7 @@ export default function Programme() {
                 </div>
                 <div>
                   <ul className='list-none text-center text-sm flex flex-col gap-2 pt-2'>
-                    <li>Vin d'honneur : Champagne et petits fours du pays</li>
+                    <li>Vin d&apos;honneur : Champagne et petits fours du pays</li>
                     <li>Entrée : Buffet de produits du pays</li>
                     <li>Plat principal : Alloyau de bœuf à la broche et truffade</li>
                     <li>Fromage : Plateau de fromages du pays</li>
