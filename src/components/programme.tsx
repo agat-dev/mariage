@@ -48,7 +48,7 @@ export default function Programme() {
         {/* Contenu dans une grid */}
         <div className='lg:grid lg:grid-cols-3 gap-8 md:gap-12 relative z-10'>
           <div className='col-span-1 mx-auto font-urbanist text-3xl font-light'>
-            <div className='text-4xl text-center font-bold mb-12 font-poiret-one relative'>
+            <div className='text-4xl text-center font-bold mb-16 font-poiret-one relative'>
               Programme du mariage
               
               {/* Ornement décoratif sous le titre */}
@@ -69,18 +69,18 @@ export default function Programme() {
             
             <div className='text-lg text-center mb-4 relative pl-8'>
               <p>
-                Vin d&apos;honneur à la Salle des Fêtes de Trizac
+                18h : Vin d&apos;honneur à la Salle des Fêtes de Trizac
               </p>
             </div>
             
             <div className='text-lg text-center mb-4 relative pl-8'>
               <p>
-                Repas de mariage à la Salle des Fêtes de Trizac
+                20h : Repas de mariage à la Salle des Fêtes de Trizac
               </p>
             </div>
             
             {/* Encadré décoratif pour les horaires */}
-            <div className='md:mt-8 text-sm italic relative'>
+            <div className='md:mt-16 mt-16 text-base relative'>
               <div className="p-4 rounded-lg border border-amber-200/50 shadow-sm relative">
                 <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-amber-400 rounded-tl-lg"></div>
                 <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-amber-400 rounded-tr-lg"></div>
@@ -93,7 +93,16 @@ export default function Programme() {
                     <div className="w-2 h-2 bg-amber-500 rounded-full mx-1"></div>
                     <div className="w-4 h-px bg-amber-400"></div>
                   </div>
-                  Horaires et détails à venir
+                  Au Menu
+                </div>
+                <div>
+                  <ul className='list-none text-center text-sm flex flex-col gap-2 pt-2'>
+                    <li>Vin d'honneur : Champagne et petits fours du pays</li>
+                    <li>Entrée : Buffet de produits du pays</li>
+                    <li>Plat principal : Alloyau de bœuf à la broche et truffade</li>
+                    <li>Fromage : Plateau de fromages du pays</li>
+                    <li>Dessert : Assortiment de desserts</li>
+                  </ul>
                 </div>
               </div>
             </div>

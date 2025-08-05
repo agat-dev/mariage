@@ -28,7 +28,7 @@ export default function Index() {
               </div>
           </section>
 
-          <section id='programme' className='md:h-screen h-[180vh] py-20 md:px-8 px-0 bg-black text-white sticky top-0 rounded-tr-2xl rounded-tl-2xl overflow-hidden'>
+          <section id='programme' className='md:h-[150vh] h-[300vh] py-20 md:px-8 px-0 bg-black text-white sticky top-0 rounded-tr-2xl rounded-tl-2xl overflow-hidden'>
               <Programme />
           </section>
 
