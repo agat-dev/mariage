@@ -6,6 +6,7 @@ import Programme from '@/components/programme';
 import NotreHistoire from '@/components/notre-histoire';
 import GoogleMap from '@/components/google-map';
 import SplashCursor from '@/components/ui/cursor';
+import LogementAirbnb from '@/components/logement';
 
 
 
@@ -40,11 +41,36 @@ export default function Index() {
           </section>          
         </div>
         
+        <section id='logement' className='text-white w-full bg-black p-2'>
+          <div className='max-w-screen-md mx-auto'>
+            <div className="mt-24 mb-10 flex flex-col items-center relative">
+            {/* Ornements Art Déco */}
+            <div className="absolute -top-6 left-1/2 -translate-x-1/2 flex gap-2">
+              <div className="w-6 h-6 border-t-2 border-l-2 border-amber-400/60 rounded-tl-lg rotate-[-15deg]"></div>
+              <div className="w-3 h-3 bg-amber-500 rounded-full mt-2"></div>
+              <div className="w-6 h-6 border-t-2 border-r-2 border-amber-400/60 rounded-tr-lg rotate-[15deg]"></div>
+            </div>    
+            <h2 className="font-poiret-one text-4xl md:text-5xl font-medium text-white tracking-widest mb-2 relative z-10">
+              Logements
+              <span className="block mx-auto mt-2 w-24 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent rounded"></span>
+            </h2>
+            <p className="text-lg text-center text-white/60 max-w-xl my-2">
+              Pour ceux qui souhaitent rester à proximité du lieu de la cérémonie, voici quelques options de logement recommandées :
+            </p>
+            {/* Ornement bas */}
+            <div className="flex justify-center gap-2 mt-2">
+              <div className="w-4 h-4 border-b-2 border-l-2 border-amber-400/60 rounded-bl-lg rotate-[15deg]"></div>
+              <div className="w-2 h-2 bg-amber-500 rounded-full mb-1"></div>
+              <div className="w-4 h-4 border-b-2 border-r-2 border-amber-400/60 rounded-br-lg rotate-[-15deg]"></div>
+            </div>
+          </div>
+            <LogementAirbnb />
+              </div>
+        </section>
       
         <section id='histoire' className='text-white w-full bg-black p-2'>
             <NotreHistoire  />
         </section>
-
 
 
         <footer id="contact" className='md:h-max h-[45vh] group bg-slate-950 '>

@@ -19,10 +19,10 @@ export default function Navbar({ className = "" }: NavbarProps) {
   }, []);
 
   const navItems = [
-    { name: "Invitation", href: "#invitation" },
     { name: "Programme", href: "#programme" },
-    { name: "Venir à Trizac", href: "#venir" },
-    { name: "Liens & Contact", href: "#contact" },
+    { name: "Venir", href: "#venir" },
+    { name: "Logements", href: "#logement" },
+    { name: "Liens", href: "#contact" },
   ];
 
   return (
